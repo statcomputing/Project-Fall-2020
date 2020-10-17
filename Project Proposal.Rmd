@@ -8,11 +8,11 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 documentclass: article
 papersize: letter
 fontsize: 11pt
-
+---
 
 ## Introduction
 
-Income inequality measures are often used as an indication of economic health. The Lorenz curve and the associated Gini coefficient are generally employed for comparisons of income inequality in various countries. However, these methods doesn't work when the variance of the income distribution is large or fails to exist, and of course this means that they are undermined by outliers in the data. So, this paper employs a non parametric inequality measure by employing the simple ratios of symmetric quantiles 
+Income inequality measures are often used as an indication of economic health. The Lorenz curve and the associated Gini coefficient are generally employed for comparisons of income inequality in various countries. However, these methods do not work when the variance of the income distribution is large or fails to exist, and of course this means that they are undermined by outliers in the data. So, this paper employs a non parametric inequality measure by employing the simple ratios of symmetric quantiles. The given topic is of particular interest because the concept seemingly has an edge over previously mentioned Lorenz curves and Gini coefficient. Apart from it's robustness and resistance to outliers, it is worth mentioning that by exploiting ratio of symmetric quantiles one can construct a distribution-free confidence intervals of the inequality coefficient.   
 
 ## Literature
 
