@@ -1,0 +1,28 @@
+---
+title: "Stat 5361 Project Proposal"
+subtitle: "A Simple and Effective Inequality Measure"
+author:
+  - Chamundeswari Koppisetti^[<chamundeswari.koppisetti@uconn.edu>] 
+  - Shynggys Magzanov^[<shynggys.magzanov@uconn.edu>]
+date: "`r format(Sys.time(), '%d %B %Y')`"
+documentclass: article
+papersize: letter
+fontsize: 11pt
+
+
+## Introduction
+
+Income inequality measures are often used as an indication of economic health. The Lorenz curve and the associated Gini coefficient are generally employed for comparisons of income inequality in various countries. However, these methods doesn't work when the variance of the income distribution is large or fails to exist, and of course this means that they are undermined by outliers in the data. So, this paper employs a non parametric inequality measure by employing the simple ratios of symmetric quantiles 
+
+## Literature
+
+Earlier studies by "Prendergast & Staudte" (2015) redefined the basic concept of the Lorenz curve in terms of quantiles instead of moments, and then determined what has been gained and lost in terms of conceptual clarity, inference and estimator resistance to contamination. Examples of this approach are the standardized median in lieu of the standardized mean, and quantile measures of skewness and kurtosis, rather than the classical moment-based measures. This overcomes the defect of explicit requirement that the population mean exists (together
+with the implicit requirement that its variance exists in order to carry out inference).
+
+Although, the recent emphasis on combinations of lognormal for the lower portion of incomes, with Pareto tails for the upper tries to apply inequality measures to a wide range of income distributions; they have parametric model assumptions. Hence, one of the main advantages of the inequality measure described herein is that it requires no parametric model assumptions.
+
+
+## Data
+
+We will be calculating Quantile Associated Inequality index 'I' and compare with Gini Index 'G'. For this, the data sets considered would be earnings data of men and women from U.S. Bureau of Labor Statistics to compare between the lorenz curve and quantile inequality curve. One of the contributions by us would be to explore the various factors affecting I, or some function thereof, in a regression setting which is not discussed in the paper.
+
