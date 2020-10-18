@@ -24,5 +24,8 @@ Although, the recent emphasis on combinations of lognormal for the lower portion
 
 ## Data
 
-We will be calculating Quantile Associated Inequality index 'I' and compare with Gini Index 'G'. For this, the data sets considered would be earnings data of men and women from U.S. Bureau of Labor Statistics to compare between the lorenz curve and quantile inequality curve. One of the contributions by us would be to explore the various factors affecting I, or some function thereof, in a regression setting which is not discussed in the paper.
-
+We will be calculating Quantile Associated Inequality index 'I' and compare with Gini Index 'G'. For this, the data sets considered would be disposable personal income, gross domestic income and earnings data of men and women provided by Federal Reserve Economic Data (FRED) to compare between the lorenz curve and quantile inequality curve. One of the contributions by us would be to explore the various factors affecting I, or some function thereof, in a regression setting which is not discussed in the paper. \
+Below are the links to the data that will be used in the project: \
+1) Disposable personal income : https://fred.stlouisfed.org/series/DSPI \
+2) Gross domestic income : https://fred.stlouisfed.org/series/GDI  \
+3) Earnings data of men and women : https://fred.stlouisfed.org/series/LES1252882700Q  \
