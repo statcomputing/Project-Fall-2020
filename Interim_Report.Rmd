@@ -66,7 +66,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 4. Current Progress
 
-Currently, the applicational part of the project on 3 real data sets was accomplished. The R-Script to calculate $\hat I$ and $\hat G$ was implemented and those metrics were computed for the data sets.   
+Currently, the applicational part of the project on 3 real data sets was accomplished. The R-Script to calculate $\hat I$ and $\hat G$ was implemented and those metrics were computed for the data sets. Additionally, respective inequality curves were plotted.   
 
 ## 4.1. Disposable Personal Income
 
@@ -242,3 +242,4 @@ Results reveal that $\hat I=0.4666$ with a standard error $0.0183$ and CI $(0.43
 
 # 5. Prospective plans
 
+To complete the project we need to elaborate on providing interpretation of obtained results. Additionally, we need to implement an algorithm to plot inequality curves using the well-known income distributions and compare values of $I$ and $G$ for them. Lastly, we need to include all the theoretical background of the concepts that were discussed in this project. 
