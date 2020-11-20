@@ -33,8 +33,8 @@ properties, including robustness to outliers.
 
 The data of Disposable Personal Income can be obtained at https://fred.stlouisfed.org/series/DSPI. 
 ```{r}
-x <- read.csv("C:\\Users\\Asus\\Downloads\\DSPI.csv")
-plot(x, type = "l", main = "Disposable Personal Income")
+DSPI <- read.csv("C:\\Users\\Asus\\Downloads\\DSPI.csv")
+plot(DSPI, type = "l", main = "Disposable Personal Income")
 ```
 
 ```{r}
@@ -123,11 +123,11 @@ hatG <- function(x, conf.level = 0.95){
 }
 ```
 ```{r}
-y <- x$DSPI
-I <- hatI(y)
+DSPI <- DSPI$DSPI
+I <- hatI(DSPI)
 I
 
-G <- hatG(y)
+G <- hatG(DSPI)
 G
 
 ```
