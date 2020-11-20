@@ -13,7 +13,7 @@ geometry: margin = 2.7cm
 output: pdf_document
 
 abstract: |
-    We'll write it later
+    We will write later
 ---
 
 ```{r setup, include=FALSE}
@@ -23,26 +23,50 @@ knitr::opts_chunk$set(echo = TRUE)
 # 1. Introduction
 ## 1.1. Measures of Inequality
 
-There exist various types of metrics used by economists to measure the income inequality. The most widely exploited ones are the Lorenz curves and the Gini coefficient, each of which have their own advantages and limitations. Those obvious limitations include the requirement for the population mean and variance to exist, as well as down-weighting smaller incomes and that way stressing way more attention to the middle incomes. This paper analyzes another income inequality measure, namely using ratios of symmetric quantiles, that proves to be helpful to overcome previously mentioned disadvantages. In addition to that, it is proven that the given metric satisfies the median preserving principle and applicable to widely used income distributions. But the major benefit is that there is no need of parametric model assumption to work with the given inequality measure.   
+  There exist various types of metrics used by economists to measure the income inequality. The most widely exploited ones are the Lorenz curves and the Gini coefficient, each of which have their own advantages and limitations. Those obvious limitations include the requirement for the population mean and variance to exist, as well as down-weighting smaller incomes and that way stressing way more attention to the middle incomes. This paper analyzes another income inequality measure, namely using ratios of symmetric quantiles, that proves to be helpful to overcome previously mentioned disadvantages. In addition to that, it is proven that the given metric satisfies the median preserving principle and applicable to widely used income distributions. But the major benefit is that there is no need of parametric model assumption to work with the given inequality measure.
 
-## 1.2. Concepts
+# 2. Importance of the Project
+  
+  There are numerous reasons of why researchers and policymakers might be interested in getting a better picture of the economic inequality in the country. Research results in this field suggest that there is a strong relationship between income inequalities amid individuals and levels of poverty, mental illnesses, crime and social unrest. At the same time most of the public policies like welfare benefits, taxation, health care, etc. have direct influence on how the income is distributed. To properly plan how to address these issues one has to have a good measure of current income inequality. This is where the ratios of symmetric quantiles metric can be very useful to get more accurate result than it can be provided by the Gini coefficient or the Lorenz curves. 
+  
+  
+\newpage
 
-# 2. Examples with well-known income distributions
-## 2.1. Inequality curves
+# 3. Preliminary content of the Project
 
-## 2.2 Comparing I and G
+\section{1. Introduction}
 
-# 3. Inference
+\subsection{1.2. Concepts and Definitions}
 
-## 3.1. Approximation of I
+\section{2. Examples with well-known income distributions}
 
-## 3.2 Confidence intervals
+\subsection{2.1. Inequality curves}
+\subsection{2.2 Comparing I and G}
 
-## 3.3 Resistance to outliers
+\section{3. Inference}
+
+\subsection{3.1. Approximation of I}
+\subsection{3.2 Confidence intervals}
+\subsection{3.3 Resistance to outliers}
+
+\section{4. Application}
+
+\subsection{4.1. Disposable Personal Income}
+\subsection{4.2. Gross Domestic Income}
+\subsection{4.3. Earnings data of women}
+
+\section{5. Conclusion}
+
+\section{6. References}
+
+\section{7. Appendix}
+
+\pagebreak
 
 
-# 4. Application
-## 4.1. Disposable Personal Income 
+# 4. Current Progress
+
+Currently, the applicational part of the project on 3 real data sets was accomplished. The R-Script to calculate $\hat I$ and $\hat G$ was implemented and those metrics were computed for the data sets.   
 
 The data of Disposable Personal Income can be obtained at https://fred.stlouisfed.org/series/DSPI. 
 ```{r}
