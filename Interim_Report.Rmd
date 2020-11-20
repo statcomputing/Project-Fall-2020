@@ -20,13 +20,26 @@ abstract: |
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Introduction
+# 1. Introduction
+## 1.1. Measures of Inequality
 
-1) Examples of inequality curves and coefficients of inequality
-for some common income distributions and compare values of I with G.
-2) We introduce empirical versions of these concepts and investigate their inferential
-properties, including robustness to outliers.
-3) Applications to income data.
+There exist various types of metrics used by economists to measure the income inequality. The most widely exploited ones are the Lorenz curves and the Gini coefficient, each of which have their own advantages and limitations. Those obvious limitations include the requirement for the population mean and variance to exist, as well as down-weighting smaller incomes and that way stressing way more attention to the middle incomes. This paper analyzes another income inequality measure, namely using ratios of symmetric quantiles, that proves to be helpful to overcome previously mentioned disadvantages. In addition to that, it is proven that the given metric satisfies the median preserving principle and applicable to widely used income distributions. But the major benefit is that there is no need of parametric model assumption to work with the given inequality measure.   
+
+## 1.2. Concepts
+
+# 2. Examples with well-known income distributions
+## 2.1. Inequality curves
+
+## 2.2 Comparing I and G
+
+# 3. Inference
+
+## 3.1. Approximation of I
+
+## 3.2 Confidence intervals
+
+## 3.3 Resistance to outliers
+
 
 # 4. Application
 ## 4.1. Disposable Personal Income 
