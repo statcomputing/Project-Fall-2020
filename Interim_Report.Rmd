@@ -68,6 +68,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Currently, the applicational part of the project on 3 real data sets was accomplished. The R-Script to calculate $\hat I$ and $\hat G$ was implemented and those metrics were computed for the data sets.   
 
+## 4.1. Disposable Personal Income
+
 The data of Disposable Personal Income can be obtained at https://fred.stlouisfed.org/series/DSPI. 
 ```{r}
 DSPI <- read.csv("C:\\Users\\Asus\\Downloads\\DSPI.csv")
@@ -92,7 +94,8 @@ QOR.gld <- function(u, lambda = NULL){
                                      (1 - u)^(l4 - 3)*(l4 - 2)*(l4 - 1))
 }
 
-hatI <- function(x, J = 100, conf.level = 0.95, bw.correct = TRUE, QOR.FUN = QOR.ln, ...){
+hatI <- function(x, J = 100, conf.level = 0.95,
+                 bw.correct = TRUE, QOR.FUN = QOR.ln, ...){
   
   n <- length(x)
   
@@ -120,8 +123,10 @@ hatI <- function(x, J = 100, conf.level = 0.95, bw.correct = TRUE, QOR.FUN = QOR
     
     rc <- matrix(Rs, ncol = J, nrow = J, byrow = FALSE)
     
-    covm <- ((1/x1u2)%*%t(1/x1u2))*(((us/2)%*%t(1 - us/2))*(q.hat.1%*%t(q.hat.1) + Rs%*%t(Rs)*(q.hat.2%*%t(q.hat.2))) -
-                                      ((us/2)%*%t(us/2))*((q.hat.1%*%t(q.hat.2))*t(rc) + (q.hat.2%*%t(q.hat.1))*rc))/n
+    covm <- ((1/x1u2)%*%t(1/x1u2))*(((us/2)%*%t(1 - us/2))*(q.hat.1%*%t(q.hat.1) 
+                                          + Rs%*%t(Rs)*(q.hat.2%*%t(q.hat.2))) -
+                                ((us/2)%*%t(us/2))*((q.hat.1%*%t(q.hat.2))*t(rc) 
+                                                 + (q.hat.2%*%t(q.hat.1))*rc))/n
     
     sigma.p2 <- (us/2)*(1 - us/2)*q.hat.1^2
     sigma.q2 <- (1 - us/2)*(us/2)*q.hat.2^2
@@ -150,7 +155,8 @@ hatG <- function(x, conf.level = 0.95){
   mu.hat <- mean(x)
   Gv <- 2/mu.hat/n^2*sx - 1
   
-  Z.hat <- -(Gv + 1)*ordered.x + (2*indices - 1)/n*ordered.x - 2/n*cumsum(ordered.x)
+  Z.hat <- -(Gv + 1)*ordered.x + (2*indices - 1)/n*ordered.x - 
+                                         2/n*cumsum(ordered.x)
   Z.bar <- mean(Z.hat)
   
   V <- 1/n^2/mu.hat^2*sum((Z.hat - Z.bar)^2)
@@ -159,6 +165,7 @@ hatG <- function(x, conf.level = 0.95){
   list(G = Gv, SE = sqrt(V), conf.int = conf.int)
 }
 ```
+
 ```{r}
 DSPI <- DSPI$DSPI
 I <- hatI(DSPI)
@@ -166,6 +173,19 @@ I
 
 G <- hatG(DSPI)
 G
+
+```
+
+```{r}
+R_p <- function(x, J = 100){
+  us <- ((1:J) - 0.5)/J
+  Rs <- (quantile(x, us/2))/(quantile(x, 1 - us/2))
+  return(cbind(us, Rs))
+}
+
+ineq_DSPI <- R_p(DSPI)
+plot(ineq_DSPI, type = "l", main = "DSPI Inequality curve",
+     xlab = "p", ylab = "R(p)")
 
 ```
 
@@ -188,6 +208,12 @@ G_gdi <- hatG(GDI)
 G_gdi
 ```
 
+```{r}
+ineq_GDI <- R_p(GDI)
+plot(ineq_GDI, type = "l", main = "GDI Inequality curve",
+     xlab = "p", ylab = "R(p)")
+```
+
 As a result, ratio of symmetric quantiles of the GDI is $\hat I=0.8204$ with a standard error $0.0162$ and confidence interval $(0.7886,0.8523)$. At the same time $\hat G=0.5499$ with a standard error of $0.0161$ and CI $(0.5182,0.5815)$. 
 
 ## 4.3. Earnings data of women
@@ -206,4 +232,13 @@ G_les <- hatG(LES)
 G_les
 ```
 
+```{r}
+ineq_LES <- R_p(LES)
+plot(ineq_LES, type = "l", main = "Earnings of women Inequality curve",
+     xlab = "p", ylab = "R(p)")
+```
+
 Results reveal that $\hat I=0.4666$ with a standard error $0.0183$ and CI $(0.4307,0.5025)$. While Gini coefficient is $\hat G=0.2199 \pm0.0094$ with CI $(0.2015,0.2384)$. 
+
+# 5. Prospective plans
+
