@@ -1,5 +1,5 @@
 ---
-title: "STAT 5361 Interim Resport"
+title: "STAT 5361 Interim Report"
 subtitle: "A Simple and Effective Inequality Measure"
 author: 
    - Chamundeswari Koppisetti^[<chamundeswari.koppisetti@uconn.edu>] 
