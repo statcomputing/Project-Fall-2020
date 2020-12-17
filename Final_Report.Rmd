@@ -16,7 +16,7 @@ output:
   bookdown::html_document
 
 Abstract: |
-  Economists use various income inequality metrics to get a better picture of the economic inequality in the country. Numerous research results suggest that there is a strong relationship between income inequalities amid individuals and levels of poverty, mental illnesses, crime and social unrest. At the same time most of the public policies like welfare benefits, taxation, health care, etc. have direct influence on how the income is distributed. So, to properly plan how to address these issues one has to have a good measure of current income inequality. In this project we discussed on a non-parametric method, ratios of symmetric quantiles that can be very useful to get more accurate result than it can be provided by the Gini coefficient or the Lorenz curves. 
+  Economists use various income inequality metrics to get a better picture of the economic inequality in the country. Numerous research results suggest that there is a strong relationship between income inequalities amid individuals and levels of poverty, mental illnesses, crime and social unrest. At the same time most of the public policies like welfare benefits, taxation, health care, etc. have direct influence on how the income is distributed. So, to properly plan how to address these issues one has to have a good measure of current income inequality. In this project we discussed on a non-parametric method, ratios of symmetric quantiles that can be very useful to get more accurate result than it can be provided by the Gini coefficient or the Lorenz curves. Ratios of quantiles are often computed for income distributions as rough measures of inequality, and symmetric quantiles is of special interest here because the graph of such ratios, plotted as a function of p (p/2 quantile) over the unit interval, yields an informative inequality curve. The area above the curve and less than the horizontal line at one is an easily interpretable measure of inequality.
 ---
 
 ```{r setup, include=FALSE}
@@ -90,6 +90,9 @@ More accurate results can be obtained using other methods to approximate the are
 #### Advantages: The Gini coefficient's main advantage is that it is a measure of inequality, not a measure of average income or some other variable which is unrepresentative of most of the population, such as gross domestic product.It can be used to compare income distributions across different population sectors as well as countries, for example the Gini coefficient for urban areas differs from that of rural areas in many countries.
 
 #### Disadvantages: The Lorenz curve may understate the actual amount of inequality if richer households are able to use income more efficiently than lower income households. Lorenz curves may intersect, reflecting differing patterns of income distribution, but nevertheless resulting in very similar Gini coefficient values.This troubling property of the Lorenz framework complicates comparisons of Gini coefficient values and may confound tests of the income inequality hypothesis.It is also claimed that the Gini coefficient is more sensitive to the income of the middle classes than to that of the extremes. 
+
+### Basic properties of quantiles
+
 
 
 ## 4.1. Disposable Personal Income
