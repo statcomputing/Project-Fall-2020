@@ -16,7 +16,9 @@ output:
   bookdown::html_document
 
 Abstract: |
-    Inequality
+    Inequality Clustering is an interesting as well as a tough topic. It's even harder to cluster mixed data due to shortage of conventional distributions. Copulas are powerful tools to modeling the distribution for multivariate variables, the articel [@doi:10.1080/03610926.2016.1277753] proposed a mixture model of Gaussian copulas for clustering mixed data. In this article, we try to explain Gaussian Copulas for mixed data and use the **R** package **MixCluster** to reproduce the results. Furthermore, we try different methods to cluster the same dataset and compare the results.
+    
+    There exist various types of metrics used by economists to measure the income inequality. The most widely exploited ones are the Lorenz curves and the Gini coefficient, each of which have their own advantages and limitations. Those obvious limitations include the requirement for the population mean and variance to exist, as well as down-weighting smaller incomes and that way stressing way more attention to the middle incomes. This paper analyzes another income inequality measure, namely using ratios of symmetric quantiles, that proves to be helpful to overcome previously mentioned disadvantages. In addition to that, it is proven that the given metric satisfies the median preserving principle and applicable to widely used income distributions. But the major benefit is that there is no need of parametric model assumption to work with the given inequality measure.
 
 ---
 
@@ -28,6 +30,43 @@ knitr::opts_chunk$set(echo = TRUE)
 ## 1.1. Measures of Inequality
 
   There exist various types of metrics used by economists to measure the income inequality. The most widely exploited ones are the Lorenz curves and the Gini coefficient, each of which have their own advantages and limitations. Those obvious limitations include the requirement for the population mean and variance to exist, as well as down-weighting smaller incomes and that way stressing way more attention to the middle incomes. This paper analyzes another income inequality measure, namely using ratios of symmetric quantiles, that proves to be helpful to overcome previously mentioned disadvantages. In addition to that, it is proven that the given metric satisfies the median preserving principle and applicable to widely used income distributions. But the major benefit is that there is no need of parametric model assumption to work with the given inequality measure.
+  
+## 1.2. Concepts and Definitions
+### Lorenz curve and Gini coefficient 
+
+  A Lorenz curve is a graph used in economics to show inequality in income spread or wealth. The x-axis on a Lorenz curve typically shows the portion or percentage of the total population, and the y-axis shows the portion of total income/ wealth, or whatever is being analyzed.
+
+Since perfect equality would mean that a $1/k$ portion of the population controlled $1/k$ of the wealth, perfect equality on the graph would be shown by a straight line with a slope of 1. This line is often drawn on the graph as a point of reference, alongside the curved line which represents the actual wealth/income/size distribution. The further away from the 1/1 baseline a particular curve is, the more pronounced the inequality.Any point on the curve can be read to tell us what percentage or portion of the population command what percent of the wealth, income, or whatever variable is being studied.
+
+```{r, echo=F, out.width='40%'}
+knitr::include_graphics("plots/Lorenz curve.JPG")
+```
+
+  Gini ratio (or Gini coefficient) is a measure of inequality, based on the Lorenz curve, that goes from 0 (absolute equality) up to 1 (absolute inequality). It's calculated as a ratio of the areas on the Lorenz curve diagram. If the area between the line of perfect equality and Lorenz curve is $A$, and the area underneath the Lorenz curve is $B$, then the Gini coefficient is $A/(A+B)$.
+  
+  Greater inequality shows up as a larger area between the Lorenz curve and the diagonal line of absolute equality. 
+  
+```{r, echo=F, out.width='40%'}
+knitr::include_graphics("plots/Gini coefficient.JPG")
+```
+  
+The Gini coefficient is often calculated with the more practical Brown Formula shown below:
+  
+$$
+\begin{aligned}
+G &= |1-\sum_{k=1}^{n}(X_k- X_{k-1})(Y_k- Y_{k-1})| \\
+\end{aligned}
+$$
+
+$G$: Gini coefficient
+$X_k$: cumulated proportion of the population variable, for $k = 0,...,n$ with $X_0 = 0$, $X_n = 1$
+$Y_k$: cumulated proportion of the income variable, for $k = 0,...,n$ with $Y_0 = 0$, $Y_n = 1$
+
+#### Advantages: The Gini coefficient's main advantage is that it is a measure of inequality, not a measure of average income or some other variable which is unrepresentative of most of the population, such as gross domestic product.
+
+#### Disadvantages: The Lorenz curve may understate the actual amount of inequality if richer households are able to use income more efficiently than lower income households. It is claimed that the Gini coefficient is more sensitive to the income of the middle classes than to that of the extremes. 
+
+
 
 # 2. Importance of the Project
   
