@@ -23,6 +23,7 @@ Abstract: |
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
 # 1. Introduction
 ## 1.1. Measures of Inequality
 
@@ -34,13 +35,9 @@ There exist various types of metrics used by economists to measure the income in
 
 A Lorenz curve is a graph used in economics to show inequality in income spread or wealth. The x-axis on a Lorenz curve typically shows the portion or percentage of the total population, and the y-axis shows the portion of total income/ wealth, or whatever is being analyzed.
 
-Since perfect equality would mean that a $1/k$ portion of the population controlled $1/k$ of the wealth, perfect equality on the graph would be shown by a straight line with a slope of 1. This line is often drawn on the graph as a point of reference, alongside the curved line which represents the actual wealth/income/size distribution. The further away from the 1/1 baseline a particular curve is, the more pronounced the inequality.Any point on the curve can be read to tell us what percentage or portion of the population command what percent of the wealth, income, or whatever variable is being studied.
+Since perfect equality would mean that a $1/k$ portion of the population controlled $1/k$ of the wealth, perfect equality on the graph would be shown by a straight line with a slope of 1. This line is often drawn on the graph as a point of reference, alongside the curved line which represents the actual wealth/income/size distribution.Any point on the curve can be read to tell us what percentage or portion of the population command what percent of the wealth, income, or whatever variable is being studied.
 
-```{r, echo=F, out.width='40%'}
-knitr::include_graphics("plots/Lorenz curve.JPG")
-```
-
-Gini ratio (or Gini coefficient) is a measure of inequality, based on the Lorenz curve, that goes from 0 (absolute equality) up to 1 (absolute inequality). It's calculated as a ratio of the areas on the Lorenz curve diagram. If the area between the line of perfect equality and Lorenz curve is $A$, and the area underneath the Lorenz curve is $B$, then the Gini coefficient is $A/(A+B)$.  
+Gini ratio (or Gini coefficient) is a measure of inequality, based on the Lorenz curve, that goes from $0$ (absolute equality) up to $1$ (absolute inequality). It's calculated as a ratio of the areas on the Lorenz curve diagram. If the area between the line of perfect equality and Lorenz curve is $A$, and the area underneath the Lorenz curve is $B$, then the Gini coefficient is $A/(A+B)$.  
 
 Greater inequality shows up as a larger area between the Lorenz curve and the diagonal line of absolute equality. 
   
@@ -125,6 +122,7 @@ I &= 1-\int_{0}^{1}\frac{x_{p/2}}{x_{1-p/2}}dp = 1- \int_{0}^{1}R(p)dp \\
 \end{aligned}
 $$
 
+
 # 4. Application
 
 The given concept was applied to three sets of data below. Namely, Disposable Personal Income, Gross Domestic Income, Earnings Data of Women in the USA. 
@@ -134,7 +132,7 @@ The given concept was applied to three sets of data below. Namely, Disposable Pe
 The data of Disposable Personal Income between 1959 and 2020 can be obtained at https://fred.stlouisfed.org/series/DSPI. 
 Firstly, $I$ and $G$ were calculated for the Disposable Personal Income Data. It appears that $\hat I=0.7561$, which is an estimate of $I$, with a standard error of $0.0106$. Additionally, 95% confidence interval of $\hat I$ was calculated to be $(0.7352, 0.7769)$. While $\hat G = 0.4872$ is significantly lower, with a standard error of $0.0095$ and respective 95% confidence interval of $(0.4686, 0.5059)$. Below is the Inequality curve of the data plotted over it's Lorenz curve.
 
-```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Disposable Personal Income in the US between 1959 and 2020", fig.align="center",out.width = '70%'}
+```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Disposable Personal Income in the US between 1959 and 2020", fig.align="center",out.width = '40%'}
 knitr::opts_chunk$set(fig.pos = 'H')
 knitr::include_graphics("plots/DSPI curves.png")
 ```
@@ -146,7 +144,7 @@ The data on Gross Domestic Income can be found here: https://fred.stlouisfed.org
 
 ```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Gross Domestic Income in the US between 1947 and 2020", fig.align="center",out.width = '40%'}
 knitr::opts_chunk$set(fig.pos = 'H')
-knitr::include_graphics("GDI curves.png")
+knitr::include_graphics("plots/GDI curves.png")
 ```
 
 Similarly to the previous data set we can see the relative underestimation of income inequality by Lorenz curve in GDI as well. However this time the discrepancy seems to be larger which is reflected in a slightly bigger difference between $\hat I$ and $\hat G$ in this data set. 
@@ -156,29 +154,219 @@ The data on Earnings of women in the US between 1979 and 2020 can be otbained fr
 Figure 3 shows that this data set is different from the previous two. According to our results, Lorenz curve dramatically overestimates the income inequality in this case. It can also be noticed from the fact that $\hat G$ significantly exceeds $\hat I$. 
 
 
-```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Earnings Data of Women in the US between 1979 and 2020", fig.align="center",out.width = '70%'}
+```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Earnings Data of Women in the US between 1979 and 2020", fig.align="center",out.width = '40%'}
 knitr::opts_chunk$set(fig.pos = 'H')
-knitr::include_graphics("LES curves.png")
+knitr::include_graphics("plots/LES curves.png")
 ```
 
 Let us take a look at boxplots of three data sets to see how this data set can be different from previous ones. 
 
 
-```{r, echo=FALSE, fig.cap="Boxplots of Data sets", fig.align="center",out.width = '70%'}
+```{r, echo=FALSE, fig.cap="Boxplots of Data sets", fig.align="center",out.width = '40%'}
 knitr::opts_chunk$set(fig.pos = 'H')
-knitr::include_graphics("Boxplots.png")
+knitr::include_graphics("plots/Boxplots.png")
 ```
 
 One can notice that all three data sets have outliers at the upper part of values. The apparent difference might be resulted from the last data set having outliers not only in the upper part of the values but at the lower part as well. And in the work of Luke A. Prendergast and Robert G. Staudte (2016) relative resistance to outliers of Inequality curves relative to Lorenz curves was proven by means of various simulations. 
+
 
 # 5. Conclusion
 
 In this project the article of Luke A. Prendergast and Robert G. Staudte (2016) was reproduced using three data sets: Disposable Personal Income, Gross Domestic Income and Earnings Data of Women in the US. The main idea is the proposition of a new Inequality measure $I$ which is the difference between the horizontal line at 1 and the symmetric ratio of quantiles curve $\{p,R(p)\}$. Despite it's calculational simplicity it has numerous advantages over Gini coefficient and Lorenz curves like resistance to outliers (Prendergast,Staudte, 2016) and non-reliance on income distribution. Our results agree with the research results of Luke A. Prendergast and Robert G. Staudte (2016). R-script for calculating $I$ and $G$, plotting Inequality and Lorenz curves is provided.    
 
 
+\newpage
+
+# Appendix
+
+Codes used to generate the results:
+
+#### Disposable Personal Income
+
+```{r}
+DSPI <- read.csv("data/DSPI.csv")
+plot(DSPI, type = "l", main = "Disposable Personal Income")
+```
+
+```{r}
+QOR.ln <- function(u){
+  # QOR function for the log-normal
+  q.n.0 <- 1/dnorm(qnorm(u))
+  q.n.1 <- qnorm(u)*q.n.0^2
+  q.n.2 <- (1 + 2*qnorm(u)^2)*q.n.0^3
+  1/(q.n.0^2 + 3*q.n.1 + q.n.2/q.n.0)
+}
+
+QOR.gld <- function(u, lambda = NULL){
+  # QOR function for the GLD FKML paramaterization
+  if(is.null(lambda)) lambda <- fit.fkml(x)$lambda
+  l3 <- lambda[3]
+  l4 <- lambda[4]
+  (u^(l3 - 1) + (1 - u)^(l4 - 1))/(u^(l3 - 3)*(l3 - 2)*(l3 - 1) + 
+                                     (1 - u)^(l4 - 3)*(l4 - 2)*(l4 - 1))
+}
+
+hatI <- function(x, J = 1000, conf.level = 0.95,
+                 bw.correct = TRUE, QOR.FUN = QOR.ln, ...){
+  
+  n <- length(x)
+  
+  us <- ((1:J) - 0.5)/J
+  Rs <- (xu2 <- quantile(x, us/2))/(x1u2 <- quantile(x, 1 - us/2))
+  I <- sum(1 - Rs)/J
+  
+  if(!is.null(conf.level)){
+    v <- c(us/2, 1 - us/2)
+    qor <- QOR.FUN(v, ...)
+    bw <- 15^(1/5)*abs(qor)^(2/5)/n^(1/5)
+    if (bw.correct) bw[v <= bw] <- v[v <= bw]
+    
+    kernepach <- function(u) 3/4*(1 - u^2)*(abs(u) <= 1)
+    m1 <- matrix(v, nrow = 2*J, ncol = n, byrow = FALSE)
+    m2 <- matrix(1:n, nrow = 2*J, ncol = n, byrow = TRUE)
+    
+    consts <- kernepach((m1 - (m2 - 1)/n)*(1/bw))*(1/bw) - 
+      kernepach((m1 - m2/n)*(1/bw))*(1/bw)
+    
+    x.sorted <- sort(x)
+    q.hat <- c(consts%*%x.sorted)
+    q.hat.1 <- q.hat[1:(length(q.hat)/2)]
+    q.hat.2 <- q.hat[-(1:(length(q.hat)/2))]
+    
+    rc <- matrix(Rs, ncol = J, nrow = J, byrow = FALSE)
+    
+    covm <- ((1/x1u2)%*%t(1/x1u2))*(((us/2)%*%t(1 - us/2))*(q.hat.1%*%t(q.hat.1) 
+                                          + Rs%*%t(Rs)*(q.hat.2%*%t(q.hat.2))) -
+                                ((us/2)%*%t(us/2))*((q.hat.1%*%t(q.hat.2))*t(rc) 
+                                                 + (q.hat.2%*%t(q.hat.1))*rc))/n
+    
+    sigma.p2 <- (us/2)*(1 - us/2)*q.hat.1^2
+    sigma.q2 <- (1 - us/2)*(us/2)*q.hat.2^2
+    sigma.pq <- (us/2)^2*q.hat.1*q.hat.2
+    a0 <- sigma.p2/x1u2^2
+    a1 <- -2*sigma.pq/x1u2^2
+    a2 <- sigma.q2/x1u2^2
+    Vs <- (a0 + a1*Rs + a2*Rs^2)/n
+    
+    V <- (sum(Vs) + 2*sum(covm[row(covm) < col(covm)]))/J^2
+    SE <- sqrt(V)
+    conf.int <- I + c(-1, 1)*qnorm(1 - (1 - conf.level)/2)*sqrt(V)
+  } else{
+    V <- NULL
+    SE <- NULL
+    conf.int <- NULL
+  } 
+  
+  list(I = I, SE = SE, conf.int = conf.int)
+}
+
+hatG <- function(x, conf.level = 0.95){
+  indices <- 1:(n <- length(x))
+  ordered.x <- sort(x)
+  sx <- sum(ordered.x*(indices - 1/2))
+  mu.hat <- mean(x)
+  Gv <- 2/mu.hat/n^2*sx - 1
+  
+  Z.hat <- -(Gv + 1)*ordered.x + (2*indices - 1)/n*ordered.x - 
+                                         2/n*cumsum(ordered.x)
+  Z.bar <- mean(Z.hat)
+  
+  V <- 1/n^2/mu.hat^2*sum((Z.hat - Z.bar)^2)
+  conf.int <- Gv + c(-1, 1)*qnorm(1 - (1 - conf.level)/2)*sqrt(V)
+  
+  list(G = Gv, SE = sqrt(V), conf.int = conf.int)
+}
+```
+
+```{r}
+DSPI <- DSPI$DSPI
+I <- hatI(DSPI)
+I
+
+G <- hatG(DSPI)
+G
+
+```
+
+```{r}
+R_p <- function(x, J = 1000){
+  us <- ((1:J) - 0.5)/J
+  Rs <- (quantile(x, us/2))/(quantile(x, 1 - us/2))
+  return(cbind(us, Rs))
+}
+
+ineq_DSPI <- R_p(DSPI)
+plot(ineq_DSPI, type = "l", main = "DSPI Inequality curve and Lorenz Curve",
+     xlab = "p", ylab = "R(p) & L(p)")
+lines(ineq::Lc(DSPI), col = "red")
+legend( "topleft", legend=c("R(p)", "L(p)"),
+       col=c("black", "red"), lty=1:1, cex=1)
+```
+
+#### Gross Domestic Income 
 
 
+```{r}
+GDI <- read.csv("data/GDI.csv")
+plot(GDI, type = "l", main = "Gross Domestic Income")
+```
+```{r}
+GDI <- GDI$GDI
+I_gdi <- hatI(GDI)
+I_gdi
 
+G_gdi <- hatG(GDI)
+G_gdi
+```
+
+```{r}
+ineq_GDI <- R_p(GDI)
+plot(ineq_GDI, type = "l", main = "GDI Inequality curve and Lorenz Curve",
+     xlab = "p", ylab = "R(p)")
+lines(ineq::Lc(GDI), col = "red")
+legend( "topleft", legend=c("R(p)", "L(p)"),
+       col=c("black", "red"), lty=1:1, cex=1)
+```
+
+
+#### Earnings data of women
+ 
+```{r}
+LES <- read.csv("data/LES.csv")
+plot(LES, type = "l", main = "Median usual weekly nominal earnings for women")
+```
+```{r}
+LES <- LES$LES
+I_les <- hatI(LES)
+I_les
+
+G_les <- hatG(LES)
+G_les
+```
+
+```{r}
+ineq_LES <- R_p(LES)
+plot(ineq_LES, type = "l", main = "Earnings of women Inequality curve and Lorenz Curve",
+     xlab = "p", ylab = "R(p)")
+lines(ineq::Lc(LES), col = "red")
+legend( "topleft", legend=c("R(p)", "L(p)"),
+       col=c("black", "red"), lty=1:1, cex=1)
+
+par(mfrow=c(1,3))
+boxplot(DSPI, xlab = "DSPI")
+boxplot(GDI, xlab = "GDI")
+boxplot(LES, xlab = "LES")
+```
+
+
+\newpage
+
+# Reference
+
+https://www.tandfonline.com/doi/abs/10.1080/00031305.2017.1366366#:~:text=Ratios%20of%20quantiles%20are%20often,ratios%20has%20recently%20become%20available.&text=The%20area%20above%20the%20curve,easily%20interpretable%20measure%20of%20inequality.
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2652960/
 http://www.bu.edu/eci/files/2019/10/Principles_2e_Ch11.pdf
+https://www.nature.com/articles/s41599-020-0484-6
+https://www.pewresearch.org/fact-tank/2015/09/22/the-many-ways-to-measure-economic-inequality/
+https://wol.iza.org/articles/measuring-income-inequality/long
 
