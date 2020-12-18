@@ -111,17 +111,26 @@ $$
 
 # 3. Methodology
 
-Based on the above properties firstly, we calculated the ratio of symmetric quantiles, where $I$ lies between 0 and 1, defined by:
+## Approximation of I
 
-$$
-\begin{aligned}
-I &= 1-\int_{0}^{1}\frac{x_{p/2}}{x_{1-p/2}}dp = 1- \int_{0}^{1}R(p)dp \\
-\end{aligned}
-$$
-Then, calculate the confidence intervals for $R(p)$ of the form 
-$\hat{R}(p)\pm z_{1-\alpha}\hat{\sigma}_{p}/\sqrt{n}$, where $\hat{\sigma}_{p}$ requires estimates of the quantile density at $p/2$ and $1-p/2$ and confidence intervals for $I$ are estimated by $\hat{I} = 1 - \int_{0}^{1}\hat{R}(p)dp$. For each $0<p<1$, $\hat{R}(p)$ is defined as $\frac{\hat{x}_{p/2}}{\hat{x}_{1-p/2}}$. 
+First, let us introduce the simple yet powerful approximation of $I$. Provided some integer $J$, a grid $\{p_j\}$ is defined on a unit interval by $p_j = (j-1/2)/J$, for $j=1,2,...,J$. Then $R(p_j)$ is evaluated for each $p_j$ and $I^{(J)}=J^{-1}\sum_{j}\{1-R(p_j)\}$ is calculated. It is clear that if J is chosen large enough, we can make $I^{(J)}$ as close to $I$ as we want. In our project we set $J=1000$ since it provided sufficiently good approximation.
 
-#Quantile optimality ratios:
+## Estimating I and Confidence Interval
+
+For every $0 < p<1$ let $\hat R(p) = \frac{\hat x_{p/2}}{\hat x_{1-p/2}}$. According to Prendergast & Staudte (2015b), $\sqrt n \{\hat R(p)-R(p)\}$ in distribution converges to $N(0, \sigma_{p}^{2})$, where the variance is:
+
+\begin{align*}
+\sigma_{p}^{2}=a_0+a_1R(p)+a_2R^2(p)
+\end{align*}
+with $a_0=(p/2)(1-p/2)q^2(p/2)/x_{1-p/2}^{2}$,$a_1=-2(p/2)^2q(p/2)q(1-p/2)/x_{1-p/2}^{2}$, $a_2=(p/2)(1-p/2)q^2(1-p/2)/x_{1-p/2}^{2}$. This result makes it possible to find the $100(1-\alpha)\%$ confidence interval for $R(p)$, i.e. $\hat{R}(p)\pm z_{1-\alpha}\hat{\sigma}_{p}/\sqrt{n}$. As we have seen calculation of the standard deviation in this case requires one to find the quantile density $q$ at $p/2$ and $1-p/2$. Details can be found in Prendergast & Staudte (2016).  
+Now let us proceed to estimation of $I$. From the definitions provided above it is clear that the estimate of $I$ will be $\hat{I} = 1 - \int_{0}^{1}\hat{R}(p)dp$. But since it is not always possible to get a closed form of $I$, we use numerical approximation. 
+Using the previously mentioned result, we can define the numerical approximation of $I$ using $I^{J}$.
+
+\begin{align*}
+\hat I^{(J)}=J^{-1}\sum_{j}\{1-\hat R(p_j)\}
+\end{align*}
+
+It's confidence interval is $\hat I^{(J)} \pm z_{1-\alpha/2} \sqrt{Var[\hat I^{(J)}]}$, where $z_{1-\alpha/2}=\Phi^{-1}(1-\alpha/2)$. Details about $Var[\hat I^{(J)}]$ can be found in Prendergast & Staudte (2016).
 
 # 4. Application
 
