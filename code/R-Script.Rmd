@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## 4.1. Disposable Personal Income
 
 ```{r}
-DSPI <- read.csv("C:\\Users\\Asus\\Downloads\\DSPI.csv")
+DSPI <- read.csv("data/DSPI.csv")
 plot(DSPI, type = "l", main = "Disposable Personal Income")
 ```
 
@@ -137,7 +137,7 @@ legend( "topleft", legend=c("R(p)", "L(p)"),
 
 
 ```{r}
-GDI <- read.csv("C:\\Users\\Asus\\Downloads\\GDI.csv")
+GDI <- read.csv("data/GDI.csv")
 plot(GDI, type = "l", main = "Gross Domestic Income")
 ```
 ```{r}
@@ -162,7 +162,7 @@ legend( "topleft", legend=c("R(p)", "L(p)"),
 ## 4.3. Earnings data of women
  
 ```{r}
-LES <- read.csv("C:\\Users\\Asus\\Downloads\\LES.csv")
+LES <- read.csv("data/LES.csv")
 plot(LES, type = "l", main = "Median usual weekly nominal earnings for women")
 ```
 ```{r}
