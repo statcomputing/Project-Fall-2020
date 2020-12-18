@@ -38,7 +38,7 @@ Gini ratio (or Gini coefficient) is a measure of inequality, based on the Lorenz
 
 Greater inequality shows up as a larger area between the Lorenz curve and the diagonal line of absolute equality. 
   
-```{r, echo=F, out.width='40%'}
+```{r, echo=FALSE, fig.cap="Lorenz curve and Gini Coefficient", fig.align="center",out.width = '40%'}
 knitr::include_graphics("plots/Gini coefficient.JPG")
 ```
   
@@ -132,7 +132,7 @@ The given concept was applied to three sets of data below. Namely, Disposable Pe
 The data of Disposable Personal Income between 1959 and 2020 can be obtained at https://fred.stlouisfed.org/series/DSPI. 
 Firstly, $I$ and $G$ were calculated for the Disposable Personal Income Data. It appears that $\hat I=0.7561$, which is an estimate of $I$, with a standard error of $0.0106$. Additionally, 95% confidence interval of $\hat I$ was calculated to be $(0.7352, 0.7769)$. While $\hat G = 0.4872$ is significantly lower, with a standard error of $0.0095$ and respective 95% confidence interval of $(0.4686, 0.5059)$. Below is the Inequality curve of the data plotted over it's Lorenz curve.
 
-```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Disposable Personal Income in the US between 1959 and 2020", fig.align="center",out.width = '40%'}
+```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Disposable Personal Income in the US between 1959 and 2020", fig.align="center",out.width = '50%'}
 knitr::opts_chunk$set(fig.pos = 'H')
 knitr::include_graphics("plots/DSPI curves.png")
 ```
@@ -142,7 +142,7 @@ One can observe that the Lorenz curve underestimates the income inequality relat
 ## 4.2. Gross Domestic Income.
 The data on Gross Domestic Income can be found here: https://fred.stlouisfed.org/series/GDI. As results reveal, ratio of symmetric quantiles of the GDI is $\hat I=0.8204$ with a standard error $0.0162$ and confidence interval $(0.7886,0.8523)$. At the same time $\hat G=0.5499$ with a standard error of $0.0161$ and CI $(0.5182,0.5815)$.
 
-```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Gross Domestic Income in the US between 1947 and 2020", fig.align="center",out.width = '40%'}
+```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Gross Domestic Income in the US between 1947 and 2020", fig.align="center",out.width = '50%'}
 knitr::opts_chunk$set(fig.pos = 'H')
 knitr::include_graphics("plots/GDI curves.png")
 ```
@@ -154,7 +154,7 @@ The data on Earnings of women in the US between 1979 and 2020 can be otbained fr
 Figure 3 shows that this data set is different from the previous two. According to our results, Lorenz curve dramatically overestimates the income inequality in this case. It can also be noticed from the fact that $\hat G$ significantly exceeds $\hat I$. 
 
 
-```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Earnings Data of Women in the US between 1979 and 2020", fig.align="center",out.width = '40%'}
+```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Earnings Data of Women in the US between 1979 and 2020", fig.align="center",out.width = '50%'}
 knitr::opts_chunk$set(fig.pos = 'H')
 knitr::include_graphics("plots/LES curves.png")
 ```
@@ -295,12 +295,12 @@ R_p <- function(x, J = 1000){
   return(cbind(us, Rs))
 }
 
-ineq_DSPI <- R_p(DSPI)
-plot(ineq_DSPI, type = "l", main = "DSPI Inequality curve and Lorenz Curve",
-     xlab = "p", ylab = "R(p) & L(p)")
-lines(ineq::Lc(DSPI), col = "red")
-legend( "topleft", legend=c("R(p)", "L(p)"),
-       col=c("black", "red"), lty=1:1, cex=1)
+#ineq_DSPI <- R_p(DSPI)
+#plot(ineq_DSPI, type = "l", main = "DSPI Inequality curve and Lorenz Curve",
+     #xlab = "p", ylab = "R(p) & L(p)")
+#lines(ineq::Lc(DSPI), col = "red")
+#legend( "topleft", legend=c("R(p)", "L(p)"),
+      # col=c("black", "red"), lty=1:1, cex=1)
 ```
 
 #### Gross Domestic Income 
@@ -320,12 +320,12 @@ G_gdi
 ```
 
 ```{r}
-ineq_GDI <- R_p(GDI)
-plot(ineq_GDI, type = "l", main = "GDI Inequality curve and Lorenz Curve",
-     xlab = "p", ylab = "R(p)")
-lines(ineq::Lc(GDI), col = "red")
-legend( "topleft", legend=c("R(p)", "L(p)"),
-       col=c("black", "red"), lty=1:1, cex=1)
+#ineq_GDI <- R_p(GDI)
+#plot(ineq_GDI, type = "l", main = "GDI Inequality curve and Lorenz Curve",
+    # xlab = "p", ylab = "R(p)")
+#lines(ineq::Lc(GDI), col = "red")
+#legend( "topleft", legend=c("R(p)", "L(p)"),
+      # col=c("black", "red"), lty=1:1, cex=1)
 ```
 
 
@@ -345,17 +345,17 @@ G_les
 ```
 
 ```{r}
-ineq_LES <- R_p(LES)
-plot(ineq_LES, type = "l", main = "Earnings of women Inequality curve and Lorenz Curve",
-     xlab = "p", ylab = "R(p)")
-lines(ineq::Lc(LES), col = "red")
-legend( "topleft", legend=c("R(p)", "L(p)"),
+#ineq_LES <- R_p(LES)
+#plot(ineq_LES, type = "l", main = "Earnings of women Inequality curve and Lorenz Curve",
+     #xlab = "p", ylab = "R(p)")
+#lines(ineq::Lc(LES), col = "red")
+#legend( "topleft", legend=c("R(p)", "L(p)"),
        col=c("black", "red"), lty=1:1, cex=1)
 
-par(mfrow=c(1,3))
-boxplot(DSPI, xlab = "DSPI")
-boxplot(GDI, xlab = "GDI")
-boxplot(LES, xlab = "LES")
+#par(mfrow=c(1,3))
+#boxplot(DSPI, xlab = "DSPI")
+#boxplot(GDI, xlab = "GDI")
+#boxplot(LES, xlab = "LES")
 ```
 
 
@@ -363,10 +363,11 @@ boxplot(LES, xlab = "LES")
 
 # Reference
 
-https://www.tandfonline.com/doi/abs/10.1080/00031305.2017.1366366#:~:text=Ratios%20of%20quantiles%20are%20often,ratios%20has%20recently%20become%20available.&text=The%20area%20above%20the%20curve,easily%20interpretable%20measure%20of%20inequality.
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2652960/
-http://www.bu.edu/eci/files/2019/10/Principles_2e_Ch11.pdf
-https://www.nature.com/articles/s41599-020-0484-6
-https://www.pewresearch.org/fact-tank/2015/09/22/the-many-ways-to-measure-economic-inequality/
-https://wol.iza.org/articles/measuring-income-inequality/long
-
+\begin{itemize}
+\item https://www.tandfonline.com/doi/abs/10.1080/00031305.2017.1366366#:~:text=Ratios%20of%20quantiles%20are%20often,ratios%20has%20recently%20become%20available.&text=The%20area%20above%20the%20curve,easily%20interpretable%20measure%20of%20inequality.
+\item https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2652960/
+\item http://www.bu.edu/eci/files/2019/10/Principles_2e_Ch11.pdf
+\item https://www.nature.com/articles/s41599-020-0484-6
+\item https://www.pewresearch.org/fact-tank/2015/09/22/the-many-ways-to-measure-economic-inequality/
+\item https://wol.iza.org/articles/measuring-income-inequality/long
+\end{itemize}
