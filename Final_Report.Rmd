@@ -54,7 +54,7 @@ G &= 1-2\int_{0}^{1} L(X)dX \\
 \end{align*}
 
 In some cases, this equation can be applied to calculate the Gini coefficient
-without direct reference to the Lorenz curve. For example, for a population with values $y_i, i = 1...n$, that are indexed in non-decreasing order ( $y_i ≤ y_{i+1}$), with $S_i = \sum_{j=1}^{i}f(y_j)y_j, S_0=0$: 
+without direct reference to the Lorenz curve. For example, for a population with values $y_i, i = 1...n$, that are indexed in non-decreasing order ( $y_i \le y_{i+1}$), with $S_i = \sum_{j=1}^{i}f(y_j)y_j, S_0=0$: 
 
 
 \begin{align*}
@@ -89,10 +89,11 @@ More accurate results can be obtained using other methods to approximate the are
 
 ## 2.2. Basic properties of the ratio of symmetric quantiles
 
-Say $F$ satisfy $F(0−) = 0$ and the $p$th quantile $x_p = Q(p) = F^{−1}(p) = inf(x : F(x) ≥ p), 0 < p < 1$.The symmetric ratio of quantiles for $0 < p < 1$ is given by $R(p) = x_{p/2}/=x_{1−p/2}$
+Say $F$ satisfy $F(0-) = 0$ and the $p$th quantile $x_p = Q(p) = F^{-1}(p) = inf(x : F(x) \ge p), 0 < p < 1$.The symmetric ratio of quantiles for $0 < p < 1$ is given by $R(p) = x_{p/2}/=x_{1-p/2}$
 
 So, for each $p$, $R(p)$ gives the ratio of the typical (median) income of the lowest proportion $p$ of incomes to the typical (median) income of the largest proportion $p$. Extend $R$ to [0,1] by defining $R(0) = 0$ and $R(1) = 1$. 
 The graph $(p; R(p))$ of R has the following properties:
+<<<<<<< HEAD
 \begin{enumerate}
 \item $0 ≤ R(p) ≤ 1$
 \item $R(p)$ is monotone increasing from $R(0) = 0$ to $R(1) = 1$
@@ -100,10 +101,17 @@ The graph $(p; R(p))$ of R has the following properties:
 \item $R(p)$ is scale invariant.
 \item After any median preserving transformation of funds from the upper half of incomes to the lower half of incomes, $R(p)$ can only increase.
 \end{enumerate}
+=======
+1. $0 \le R(p) \le 1$
+2. $R(p)$ is monotone increasing from $R(0) = 0$ to $R(1) = 1$
+3. $R(p) = 1$ for all $0 < p < 1$ if and only if all incomes are equal.
+4. $R(p)$ is scale invariant.
+5. After any median preserving transformation of funds from the upper half of incomes to the lower half of incomes, $R(p)$ can only increase.
+>>>>>>> 121d9978b0ca4a2f3012139f53ed5d04b1d56e90
 
 We define ratio of inequality by $I = I(F) = 1- \int_{0}^{1}R(p)dp$ and interpreted as "if one selects an income at random from those below the median and divides it by its symmetric quantile, on average
-one obtains $1−I(F)$. Therefore, $I(F)$ has the simple interpretation as the average relative
-distance $(Y − X)/Y$ of $X$ from its symmetric quantile $Y$.
+one obtains $1-I(F)$. Therefore, $I(F)$ has the simple interpretation as the average relative
+distance $(Y - X)/Y$ of $X$ from its symmetric quantile $Y$.
 These properties of $I$ lead to explore the inequality measure as an alternative to the Gini Index which is defined as:
 
 
@@ -116,9 +124,15 @@ G &= 1-\frac{1}{E(X)}\int_{0}^{\infty}(1-F(x))^2dx \\
 # 3. Methodology
 
 ## Approximation of I
+<<<<<<< HEAD
 
 First, let us introduce the simple yet powerful approximation of $I$. Provided some integer $J$, a grid $\{p_j\}$ is defined on a unit interval by $p_j = (j-1/2)/J$, for $j=1,2,...,J$. Then $R(p_j)$ is evaluated for each $p_j$ and $I^{(J)}=J^{-1}\sum_{j}\{1-R(p_j)\}$ is calculated. It is clear that if J is chosen large enough, we can make $I^{(J)}$ as close to $I$ as we want. In our project we set $J=1000$ since it provided sufficiently good approximation.
 
+=======
+
+First, let us introduce the simple yet powerful approximation of $I$. Provided some integer $J$, a grid $\{p_j\}$ is defined on a unit interval by $p_j = (j-1/2)/J$, for $j=1,2,...,J$. Then $R(p_j)$ is evaluated for each $p_j$ and $I^{(J)}=J^{-1}\sum_{j}\{1-R(p_j)\}$ is calculated. It is clear that if J is chosen large enough, we can make $I^{(J)}$ as close to $I$ as we want. In our project we set $J=1000$ since it provided sufficiently good approximation.
+
+>>>>>>> 121d9978b0ca4a2f3012139f53ed5d04b1d56e90
 ## Estimating I and Confidence Interval
 
 For every $0 < p<1$ let $\hat R(p) = \frac{\hat x_{p/2}}{\hat x_{1-p/2}}$. According to Prendergast & Staudte (2015b), $\sqrt n \{\hat R(p)-R(p)\}$ in distribution converges to $N(0, \sigma_{p}^{2})$, where the variance is:
@@ -129,6 +143,7 @@ For every $0 < p<1$ let $\hat R(p) = \frac{\hat x_{p/2}}{\hat x_{1-p/2}}$. Accor
 with $a_0=(p/2)(1-p/2)q^2(p/2)/x_{1-p/2}^{2}$,$a_1=-2(p/2)^2q(p/2)q(1-p/2)/x_{1-p/2}^{2}$, $a_2=(p/2)(1-p/2)q^2(1-p/2)/x_{1-p/2}^{2}$. This result makes it possible to find the $100(1-\alpha)\%$ confidence interval for $R(p)$, i.e. $\hat{R}(p)\pm z_{1-\alpha}\hat{\sigma}_{p}/\sqrt{n}$. As we have seen calculation of the standard deviation in this case requires one to find the quantile density $q$ at $p/2$ and $1-p/2$. Details can be found in Prendergast & Staudte (2016).  
 Now let us proceed to estimation of $I$. From the definitions provided above it is clear that the estimate of $I$ will be $\hat{I} = 1 - \int_{0}^{1}\hat{R}(p)dp$. But since it is not always possible to get a closed form of $I$, we use numerical approximation. 
 Using the previously mentioned result, we can define the numerical approximation of $I$ using $I^{J}$.
+<<<<<<< HEAD
 
 \begin{align*}
 \hat I^{(J)}=J^{-1}\sum_{j}\{1-\hat R(p_j)\}
@@ -136,6 +151,14 @@ Using the previously mentioned result, we can define the numerical approximation
 
 It's confidence interval is $\hat I^{(J)} \pm z_{1-\alpha/2} \sqrt{Var[\hat I^{(J)}]}$, where $z_{1-\alpha/2}=\Phi^{-1}(1-\alpha/2)$. Details about $Var[\hat I^{(J)}]$ can be found in Prendergast & Staudte (2016).
 
+=======
+
+\begin{align*}
+\hat I^{(J)}=J^{-1}\sum_{j}\{1-\hat R(p_j)\}
+\end{align*}
+
+It's confidence interval is $\hat I^{(J)} \pm z_{1-\alpha/2} \sqrt{Var[\hat I^{(J)}]}$, where $z_{1-\alpha/2}=\Phi^{-1}(1-\alpha/2)$. Details about $Var[\hat I^{(J)}]$ can be found in Prendergast & Staudte (2016).
+>>>>>>> 121d9978b0ca4a2f3012139f53ed5d04b1d56e90
 
 # 4. Application
 
@@ -147,7 +170,11 @@ The data of Disposable Personal Income between 1959 and 2020 can be obtained at 
 Firstly, $I$ and $G$ were calculated for the Disposable Personal Income Data. It appears that $\hat I=0.7561$, which is an estimate of $I$, with a standard error of $0.0106$. Additionally, 95% confidence interval of $\hat I$ was calculated to be $(0.7352, 0.7769)$. While $\hat G = 0.4872$ is significantly lower, with a standard error of $0.0095$ and respective 95% confidence interval of $(0.4686, 0.5059)$. Below is the Inequality curve of the data plotted over it's Lorenz curve.
 
 ```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Disposable Personal Income in the US between 1959 and 2020", fig.align="center",out.width = '50%'}
+<<<<<<< HEAD
 #knitr::opts_chunk$set(fig.pos = 'H')
+=======
+knitr::opts_chunk$set(fig.pos = 'H')
+>>>>>>> 121d9978b0ca4a2f3012139f53ed5d04b1d56e90
 knitr::include_graphics("plots/DSPI curves.png")
 ```
 
@@ -157,7 +184,11 @@ One can observe that the Lorenz curve underestimates the income inequality relat
 The data on Gross Domestic Income can be found here: https://fred.stlouisfed.org/series/GDI. As results reveal, ratio of symmetric quantiles of the GDI is $\hat I=0.8204$ with a standard error $0.0162$ and confidence interval $(0.7886,0.8523)$. At the same time $\hat G=0.5499$ with a standard error of $0.0161$ and CI $(0.5182,0.5815)$.
 
 ```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Gross Domestic Income in the US between 1947 and 2020", fig.align="center",out.width = '50%'}
+<<<<<<< HEAD
 #knitr::opts_chunk$set(fig.pos = 'H')
+=======
+knitr::opts_chunk$set(fig.pos = 'H')
+>>>>>>> 121d9978b0ca4a2f3012139f53ed5d04b1d56e90
 knitr::include_graphics("plots/GDI curves.png")
 ```
 
@@ -169,7 +200,11 @@ Figure 4 shows that this data set is different from the previous two. According 
 
 
 ```{r, echo=FALSE, fig.cap="Income inequality curve and Lorenz curve of Earnings Data of Women in the US between 1979 and 2020", fig.align="center",out.width = '50%'}
+<<<<<<< HEAD
 #knitr::opts_chunk$set(fig.pos = 'H')
+=======
+knitr::opts_chunk$set(fig.pos = 'H')
+>>>>>>> 121d9978b0ca4a2f3012139f53ed5d04b1d56e90
 knitr::include_graphics("plots/LES curves.png")
 ```
 
@@ -199,9 +234,13 @@ Codes used to generate the results:
 
 ```{r}
 DSPI <- read.csv("data/DSPI.csv")
+<<<<<<< HEAD
 ```
 ```{r, fig.cap="Disposable Personal Income", fig.align="center",out.width = '50%'}
 plot(DSPI, type = "l")
+=======
+#plot(DSPI, type = "l", main = "Disposable Personal Income")
+>>>>>>> 121d9978b0ca4a2f3012139f53ed5d04b1d56e90
 ```
 
 ```{r}
@@ -311,22 +350,34 @@ R_p <- function(x, J = 1000){
   return(cbind(us, Rs))
 }
 
+<<<<<<< HEAD
 ineq_DSPI <- R_p(DSPI)
 #plot(ineq_DSPI, type = "l", main = "DSPI Inequality curve and Lorenz Curve",
  #    xlab = "p", ylab = "R(p) & L(p)")
 #lines(ineq::Lc(DSPI), col = "red")
 #legend( "topleft", legend=c("R(p)", "L(p)"),
  #      col=c("black", "red"), lty=1:1, cex=1)
+=======
+#ineq_DSPI <- R_p(DSPI)
+#plot(ineq_DSPI, type = "l", main = "DSPI Inequality curve and Lorenz Curve",
+     #xlab = "p", ylab = "R(p) & L(p)")
+#lines(ineq::Lc(DSPI), col = "red")
+#legend( "topleft", legend=c("R(p)", "L(p)"),
+      # col=c("black", "red"), lty=1:1, cex=1)
+>>>>>>> 121d9978b0ca4a2f3012139f53ed5d04b1d56e90
 ```
 
 #### Gross Domestic Income 
 
-
 ```{r}
 GDI <- read.csv("data/GDI.csv")
+<<<<<<< HEAD
 ```
 ```{r, fig.cap="Gross Domestic Income", fig.align="center",out.width = '50%'}
 plot(GDI, type = "l")
+=======
+#plot(GDI, type = "l", main = "Gross Domestic Income")
+>>>>>>> 121d9978b0ca4a2f3012139f53ed5d04b1d56e90
 ```
 ```{r}
 GDI <- GDI$GDI
@@ -338,22 +389,34 @@ G_gdi
 ```
 
 ```{r}
+<<<<<<< HEAD
 ineq_GDI <- R_p(GDI)
 #plot(ineq_GDI, type = "l", main = "GDI Inequality curve and Lorenz Curve",
  #    xlab = "p", ylab = "R(p)")
 #lines(ineq::Lc(GDI), col = "red")
 #legend( "topleft", legend=c("R(p)", "L(p)"),
  #      col=c("black", "red"), lty=1:1, cex=1)
+=======
+#ineq_GDI <- R_p(GDI)
+#plot(ineq_GDI, type = "l", main = "GDI Inequality curve and Lorenz Curve",
+    # xlab = "p", ylab = "R(p)")
+#lines(ineq::Lc(GDI), col = "red")
+#legend( "topleft", legend=c("R(p)", "L(p)"),
+      # col=c("black", "red"), lty=1:1, cex=1)
+>>>>>>> 121d9978b0ca4a2f3012139f53ed5d04b1d56e90
 ```
-
 
 #### Earnings data of women
  
 ```{r}
 LES <- read.csv("data/LES.csv")
+<<<<<<< HEAD
 ```
 ```{r, fig.cap="Earnings of Women", fig.align="center",out.width = '50%'}
 plot(LES, type = "l")
+=======
+#plot(LES, type = "l", main = "Median usual weekly nominal earnings for women")
+>>>>>>> 121d9978b0ca4a2f3012139f53ed5d04b1d56e90
 ```
 ```{r}
 LES <- LES$LES
@@ -365,12 +428,21 @@ G_les
 ```
 
 ```{r}
+<<<<<<< HEAD
 ineq_LES <- R_p(LES)
 #plot(ineq_LES, type = "l", main = "Earnings of women Inequality curve and Lorenz Curve",
  #    xlab = "p", ylab = "R(p)")
 #lines(ineq::Lc(LES), col = "red")
 #legend( "topleft", legend=c("R(p)", "L(p)"),
  #      col=c("black", "red"), lty=1:1, cex=1)
+=======
+#ineq_LES <- R_p(LES)
+#plot(ineq_LES, type = "l", main = "Earnings of women Inequality curve and Lorenz Curve",
+     #xlab = "p", ylab = "R(p)")
+#lines(ineq::Lc(LES), col = "red")
+#legend( "topleft", legend=c("R(p)", "L(p)"),
+       #col=c("black", "red"), lty=1:1, cex=1)
+>>>>>>> 121d9978b0ca4a2f3012139f53ed5d04b1d56e90
 
 #par(mfrow=c(1,3))
 #boxplot(DSPI, xlab = "DSPI")
@@ -390,7 +462,19 @@ ineq_LES <- R_p(LES)
 
 \item {De Maio FG, "Income inequality measures," J Epidemiol Community Health. 2007;61(10):849-852. doi:10.1136/jech.2006.052969}
 
+<<<<<<< HEAD
 \item {Sitthiyot, T., Holasut, K. "A simple method for measuring inequality," Palgrave Commun 6, 112 (2020). https://doi.org/10.1057/s41599-020-0484-6}
 
 \item {Trapeznikova, I. "Measuring income inequality," IZA World of Labor 2019: 462 doi: 10.15185/izawol.462}
 \end{itemize}
+=======
+Luke A. Prendergast & Robert G. Staudte (2018), "A Simple and Effective Inequality Measure," The American Statistician, 72:4, 328-343, DOI: 10.1080/00031305.2017.1366366
+
+Joseph L. Gastwirth (2017), "Is the Gini Index of Inequality Overly Sensitive to Changes in the Middle of the Income Distribution?," Statistics and Public Policy, 4:1, 1-11, DOI: 10.1080/2330443X.2017.1360813
+
+De Maio FG, "Income inequality measures," J Epidemiol Community Health. 2007;61(10):849-852. doi:10.1136/jech.2006.052969
+
+Sitthiyot, T., Holasut, K. "A simple method for measuring inequality," Palgrave Commun 6, 112 (2020). https://doi.org/10.1057/s41599-020-0484-6
+
+Trapeznikova, I. "Measuring income inequality," IZA World of Labor 2019: 462 doi: 10.15185/izawol.462
+>>>>>>> 121d9978b0ca4a2f3012139f53ed5d04b1d56e90
