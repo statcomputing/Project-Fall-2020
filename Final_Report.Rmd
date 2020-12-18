@@ -4,16 +4,13 @@ subtitle: "A Simple and Effective Inequality Measure"
 author:
   - Chamundeswari Koppisetti^[<chamundeswari.koppisetti@uconn.edu>]
   - Shynggys Magzanov^[<shynggys.magzanov@uconn.edu>]
-date: "`r format(Sys.time(), '%d %B %Y')`"
+date: "12 17 2020"
 documentclass: article
 papersize: letter
 fontsize: 11pt
-bibliography: template.bib
 biblio-style: asa
 geometry: margin = 2.7cm
-output:
-  bookdown::pdf_document
-  bookdown::html_document
+output: pdf_document
 
 Abstract: |
   Economists use various income inequality metrics to get a better picture of the economic inequality in the country. Numerous research results suggest that there is a strong relationship between income inequalities amid individuals and levels of poverty, mental illnesses, crime and social unrest. At the same time most of the public policies like welfare benefits, taxation, health care, etc. have direct influence on how the income is distributed. So, to properly plan how to address these issues one has to have a good measure of current income inequality. In this project we discussed on a non-parametric method, ratios of symmetric quantiles that can be very useful to get more accurate result than it can be provided by the Gini coefficient or the Lorenz curves. Ratios of quantiles are often computed for income distributions as rough measures of inequality, and symmetric quantiles is of special interest here because the graph of such ratios, plotted as a function of p (p/2 quantile) over the unit interval, yields an informative inequality curve. The area above the curve and less than the horizontal line at one is an easily interpretable measure of inequality.
@@ -114,14 +111,17 @@ $$
 
 # 3. Methodology
 
-Based on the above properties we calculate the ratio of symmetric quantiles, where $I$ lies between 0 and 1, defined by:
+Based on the above properties firstly, we calculated the ratio of symmetric quantiles, where $I$ lies between 0 and 1, defined by:
 
 $$
 \begin{aligned}
 I &= 1-\int_{0}^{1}\frac{x_{p/2}}{x_{1-p/2}}dp = 1- \int_{0}^{1}R(p)dp \\
 \end{aligned}
 $$
+Then, calculate the confidence intervals for $R(p)$ of the form 
+$\hat{R}(p)\pm z_{1-\alpha}\hat{\sigma}_{p}/\sqrt{n}$, where $\hat{\sigma}_{p}$ requires estimates of the quantile density at $p/2$ and $1-p/2$ and confidence intervals for $I$ are estimated by $\hat{I} = 1 - \int_{0}^{1}\hat{R}(p)dp$. For each $0<p<1$, $\hat{R}(p)$ is defined as $\frac{\hat{x}_{p/2}}{\hat{x}_{1-p/2}}$. 
 
+#Quantile optimality ratios:
 
 # 4. Application
 
