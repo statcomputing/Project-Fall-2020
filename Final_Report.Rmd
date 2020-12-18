@@ -52,7 +52,7 @@ G &= 1-2\int_{0}^{1} L(X)dX\\
 \end{aligned}
 $$
 In some cases, this equation can be applied to calculate the Gini coefficient
-without direct reference to the Lorenz curve. For example, for a population with values $y_i, i = 1...n$, that are indexed in non-decreasing order ( $y_i ≤ y_{i+1}$), with $S_i = \sum_{j=1}^{i}f(y_j)y_j, S_0=0$: 
+without direct reference to the Lorenz curve. For example, for a population with values $y_i, i = 1...n$, that are indexed in non-decreasing order ( $y_i \le y_{i+1}$), with $S_i = \sum_{j=1}^{i}f(y_j)y_j, S_0=0$: 
 
 $$
 \begin{aligned}
@@ -87,19 +87,19 @@ More accurate results can be obtained using other methods to approximate the are
 
 ## 2.2. Basic properties of the ratio of symmetric quantiles
 
-Say $F$ satisfy $F(0−) = 0$ and the $p$th quantile $x_p = Q(p) = F^{−1}(p) = inf(x : F(x) ≥ p), 0 < p < 1$.The symmetric ratio of quantiles for $0 < p < 1$ is given by $R(p) = x_{p/2}/=x_{1−p/2}$
+Say $F$ satisfy $F(0-) = 0$ and the $p$th quantile $x_p = Q(p) = F^{-1}(p) = inf(x : F(x) \ge p), 0 < p < 1$.The symmetric ratio of quantiles for $0 < p < 1$ is given by $R(p) = x_{p/2}/=x_{1-p/2}$
 
 So, for each $p$, $R(p)$ gives the ratio of the typical (median) income of the lowest proportion $p$ of incomes to the typical (median) income of the largest proportion $p$. Extend $R$ to [0,1] by defining $R(0) = 0$ and $R(1) = 1$. 
 The graph $(p; R(p))$ of R has the following properties:
-1. $0 ≤ R(p) ≤ 1$
+1. $0 \le R(p) \le 1$
 2. $R(p)$ is monotone increasing from $R(0) = 0$ to $R(1) = 1$
 3. $R(p) = 1$ for all $0 < p < 1$ if and only if all incomes are equal.
 4. $R(p)$ is scale invariant.
 5. After any median preserving transformation of funds from the upper half of incomes to the lower half of incomes, $R(p)$ can only increase.
 
 We define ratio of inequality by $I = I(F) = 1- \int_{0}^{1}R(p)dp$ and interpreted as "if one selects an income at random from those below the median and divides it by its symmetric quantile, on average
-one obtains $1−I(F)$. Therefore, $I(F)$ has the simple interpretation as the average relative
-distance $(Y − X)/Y$ of $X$ from its symmetric quantile $Y$.
+one obtains $1-I(F)$. Therefore, $I(F)$ has the simple interpretation as the average relative
+distance $(Y - X)/Y$ of $X$ from its symmetric quantile $Y$.
 These properties of $I$ lead to explore the inequality measure as an alternative to the Gini Index which is defined as:
 
 $$
@@ -194,7 +194,7 @@ Codes used to generate the results:
 
 ```{r}
 DSPI <- read.csv("data/DSPI.csv")
-plot(DSPI, type = "l", main = "Disposable Personal Income")
+#plot(DSPI, type = "l", main = "Disposable Personal Income")
 ```
 
 ```{r}
@@ -314,10 +314,9 @@ R_p <- function(x, J = 1000){
 
 #### Gross Domestic Income 
 
-
 ```{r}
 GDI <- read.csv("data/GDI.csv")
-plot(GDI, type = "l", main = "Gross Domestic Income")
+#plot(GDI, type = "l", main = "Gross Domestic Income")
 ```
 ```{r}
 GDI <- GDI$GDI
@@ -337,12 +336,11 @@ G_gdi
       # col=c("black", "red"), lty=1:1, cex=1)
 ```
 
-
 #### Earnings data of women
  
 ```{r}
 LES <- read.csv("data/LES.csv")
-plot(LES, type = "l", main = "Median usual weekly nominal earnings for women")
+#plot(LES, type = "l", main = "Median usual weekly nominal earnings for women")
 ```
 ```{r}
 LES <- LES$LES
@@ -359,7 +357,7 @@ G_les
      #xlab = "p", ylab = "R(p)")
 #lines(ineq::Lc(LES), col = "red")
 #legend( "topleft", legend=c("R(p)", "L(p)"),
-       col=c("black", "red"), lty=1:1, cex=1)
+       #col=c("black", "red"), lty=1:1, cex=1)
 
 #par(mfrow=c(1,3))
 #boxplot(DSPI, xlab = "DSPI")
@@ -372,11 +370,12 @@ G_les
 
 # Reference
 
-\begin{itemize}
-\item https://www.tandfonline.com/doi/abs/10.1080/00031305.2017.1366366#:~:text=Ratios%20of%20quantiles%20are%20often,ratios%20has%20recently%20become%20available.&text=The%20area%20above%20the%20curve,easily%20interpretable%20measure%20of%20inequality.
-\item https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2652960/
-\item http://www.bu.edu/eci/files/2019/10/Principles_2e_Ch11.pdf
-\item https://www.nature.com/articles/s41599-020-0484-6
-\item https://www.pewresearch.org/fact-tank/2015/09/22/the-many-ways-to-measure-economic-inequality/
-\item https://wol.iza.org/articles/measuring-income-inequality/long
-\end{itemize}
+Luke A. Prendergast & Robert G. Staudte (2018), "A Simple and Effective Inequality Measure," The American Statistician, 72:4, 328-343, DOI: 10.1080/00031305.2017.1366366
+
+Joseph L. Gastwirth (2017), "Is the Gini Index of Inequality Overly Sensitive to Changes in the Middle of the Income Distribution?," Statistics and Public Policy, 4:1, 1-11, DOI: 10.1080/2330443X.2017.1360813
+
+De Maio FG, "Income inequality measures," J Epidemiol Community Health. 2007;61(10):849-852. doi:10.1136/jech.2006.052969
+
+Sitthiyot, T., Holasut, K. "A simple method for measuring inequality," Palgrave Commun 6, 112 (2020). https://doi.org/10.1057/s41599-020-0484-6
+
+Trapeznikova, I. "Measuring income inequality," IZA World of Labor 2019: 462 doi: 10.15185/izawol.462
